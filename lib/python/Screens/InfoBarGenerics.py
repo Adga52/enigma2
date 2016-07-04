@@ -294,11 +294,12 @@ class SecondInfoBar(Screen):
 
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		if config.usage.show_second_infobar.value == "3" and (config.skin.primary_skin.value == "DMConcinnity-HD/skin.xml" or config.skin.primary_skin.value.startswith('MetrixHD/')):
+		if config.usage.show_second_infobar.value == "3":
 			self.skinName = "SecondInfoBarECM"
 		else:
 			self.skinName = "SecondInfoBar"
 		self["epg_description"] = ScrollLabel()
+		self["FullDescription"] = ScrollLabel()
 		self["channel"] = Label()
 		self["key_red"] = Label()
 		self["key_green"] = Label()
@@ -306,6 +307,8 @@ class SecondInfoBar(Screen):
 		self["key_blue"] = Label()
 		self["SecondInfoBar"] = ActionMap(["2ndInfobarActions"],
 			{
+				"pageUp": self.pageUp,
+				"pageDown": self.pageDown,
 				"prevPage": self.pageUp,
 				"nextPage": self.pageDown,
 				"prevEvent": self.prevEvent,
@@ -324,9 +327,11 @@ class SecondInfoBar(Screen):
 
 	def pageUp(self):
 		self["epg_description"].pageUp()
+		self["FullDescription"].pageUp()
 
 	def pageDown(self):
 		self["epg_description"].pageDown()
+		self["FullDescription"].pageDown()
 
 	def __Show(self):
 		if config.plisettings.ColouredButtons.value:
@@ -342,6 +347,7 @@ class SecondInfoBar(Screen):
 
 	def getEvent(self):
 		self["epg_description"].setText("")
+		self["FullDescription"].setText("")
 		self["channel"].setText("")
 		ref = self.session.nav.getCurrentlyPlayingServiceOrGroup()
 		self.getNowNext()
@@ -3808,16 +3814,16 @@ class InfoBarInstantRecord:
 				if self.recording[self.selectedEntry].end != ret[1]:
 					self.recording[self.selectedEntry].autoincrease = False
 				self.recording[self.selectedEntry].end = ret[1]
-		else:
-			if self.recording[self.selectedEntry].end != int(time()):
-				self.recording[self.selectedEntry].autoincrease = False
-			self.recording[self.selectedEntry].end = int(time())
-		self.session.nav.RecordTimer.timeChanged(self.recording[self.selectedEntry])
+		#else:
+		#	if self.recording[self.selectedEntry].end != int(time()):
+		#		self.recording[self.selectedEntry].autoincrease = False
+		#	self.recording[self.selectedEntry].end = int(time())
+				self.session.nav.RecordTimer.timeChanged(self.recording[self.selectedEntry])
 
 	def changeDuration(self, entry):
 		if entry is not None and entry >= 0:
 			self.selectedEntry = entry
-			self.session.openWithCallback(self.inputCallback, InputBox, title=_("How many minutes do you want to record?"), text="5", maxSize=False, type=Input.NUMBER)
+			self.session.openWithCallback(self.inputCallback, InputBox, title=_("How many minutes do you want to record?"), text="5  ", maxSize=True, type=Input.NUMBER)
 
 	def inputCallback(self, value):
 #		print "stopping recording after", int(value), "minutes."
@@ -3826,11 +3832,11 @@ class InfoBarInstantRecord:
 			if int(value) != 0:
 				entry.autoincrease = False
 			entry.end = int(time()) + 60 * int(value)
-		else:
-			if entry.end != int(time()):
-				entry.autoincrease = False
-			entry.end = int(time())
-		self.session.nav.RecordTimer.timeChanged(entry)
+		#else:
+		#	if entry.end != int(time()):
+		#		entry.autoincrease = False
+		#	entry.end = int(time())
+			self.session.nav.RecordTimer.timeChanged(entry)
 
 	def isTimerRecordRunning(self):
 		identical = timers = 0
@@ -3894,11 +3900,11 @@ class InfoBarAudioSelection:
 		self["AudioSelectionAction"] = HelpableActionMap(self, "InfobarAudioSelectionActions",
 			{
 				"audioSelection": (self.audioSelection, _("Audio options...")),
-				"audio_key": (self.audio_key, _("Audio options...")),
+				"yellow_key": (self.yellow_key, _("Audio options...")),
 				"audioSelectionLong": (self.audioSelectionLong, _("Toggle Digital downmix...")),
 			})
 
-	def audioSelection(self):
+	def yellow_key(self):
 		if not hasattr(self, "LongButtonPressed"):
 			self.LongButtonPressed = False
 		if not self.LongButtonPressed:
@@ -3932,24 +3938,33 @@ class InfoBarAudioSelection:
 				except:
 					pass
 				
-	def audio_key(self):
+	def audioSelection(self):
 		from Screens.AudioSelection import AudioSelection
 		self.session.openWithCallback(self.audioSelected, AudioSelection, infobar=self)
 
 	def audioSelected(self, ret=None):
 		print "[infobar::audioSelected]", ret
 
-	def audioSelectionLong(self):
+	def audioSelectionLong(self, popup = True):
 		if SystemInfo["CanDownmixAC3"] and self.LongButtonPressed:
 			if config.av.downmix_ac3.value:
-				message = _("Dobly Digital downmix is now") + " " + _("disabled")
-				print '[Audio] Dobly Digital downmix is now disabled'
+				message = _("Dolby Digital downmix is now") + " " + _("disabled")
+				print '[Audio] Dolby Digital downmix is now disabled'
 				config.av.downmix_ac3.setValue(False)
 			else:
 				config.av.downmix_ac3.setValue(True)
-				message = _("Dobly Digital downmix is now") + " " + _("enabled")
-				print '[Audio] Dobly Digital downmix is now enabled'
-			Notifications.AddPopup(text = message, type = MessageBox.TYPE_INFO, timeout = 5, id = "DDdownmixToggle")
+				message = _("Dolby Digital downmix is now") + " " + _("enabled")
+				print '[Audio] Dolby Digital downmix is now enabled'
+			if popup:
+				Notifications.AddPopup(text = message, type = MessageBox.TYPE_INFO, timeout = 5, id = "DDdownmixToggle")
+
+	def audioDownmixOn(self):
+		if not config.av.downmix_ac3.value:
+			self.audioSelectionLong(False)
+
+	def audioDownmixOff(self):
+		if config.av.downmix_ac3.value:
+			self.audioSelectionLong(False)
 
 class InfoBarSubserviceSelection:
 	def __init__(self):
@@ -4083,17 +4098,20 @@ class InfoBarSubserviceSelection:
 				self.session.nav.playService(service[1], False)
 
 	def addSubserviceToBouquetCallback(self, service):
-		if len(service) > 1 and isinstance(service[1], eServiceReference):
-			self.selectedSubservice = service
-			if self.bouquets is None:
-				cnt = 0
-			else:
-				cnt = len(self.bouquets)
-			if cnt > 1: # show bouquet list
-				self.bsel = self.session.openWithCallback(self.bouquetSelClosed, BouquetSelector, self.bouquets, self.addSubserviceToBouquet)
-			elif cnt == 1: # add to only one existing bouquet
-				self.addSubserviceToBouquet(self.bouquets[0][1])
-				self.session.open(MessageBox, _("Service has been added to the favourites."), MessageBox.TYPE_INFO)
+		if not service is None:
+			if len(service) > 1 and isinstance(service[1], eServiceReference):
+				self.selectedSubservice = service
+				if self.bouquets is None:
+					cnt = 0
+				else:
+					cnt = len(self.bouquets)
+				if cnt > 1: # show bouquet list
+					self.bsel = self.session.openWithCallback(self.bouquetSelClosed, BouquetSelector, self.bouquets, self.addSubserviceToBouquet)
+				elif cnt == 1: # add to only one existing bouquet
+					self.addSubserviceToBouquet(self.bouquets[0][1])
+					self.session.open(MessageBox, _("Service has been added to the favourites."), MessageBox.TYPE_INFO)
+		else:
+			self.session.open(MessageBox, _("Service cant been added to the favourites."), MessageBox.TYPE_INFO)
 
 	def bouquetSelClosed(self, confirmed):
 		self.bsel = None
@@ -4760,6 +4778,16 @@ class InfoBarSubtitleSupport(object):
 			self.session.open(SubtitleSelection, self)
 		else:
 			return 0
+
+	def subtitleQuickMenu(self):
+		service = self.session.nav.getCurrentService()
+		subtitle = service and service.subtitle()
+		subtitlelist = subtitle and subtitle.getSubtitleList()
+		if self.selected_subtitle and self.selected_subtitle != (0,0,0,0):
+			from Screens.AudioSelection import QuickSubtitlesConfigMenu
+			self.session.open(QuickSubtitlesConfigMenu, self)
+		else:
+			self.subtitleSelection()
 
 	def __serviceChanged(self):
 		if self.selected_subtitle:

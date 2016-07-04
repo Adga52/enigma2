@@ -733,6 +733,7 @@ class EPGSelection(Screen, HelpableScreen):
 					self.ask_time = ret[1]
 					self['list'].fillMultiEPG(self.services, ret[1])
 				elif self.type == EPG_TYPE_GRAPH or self.type == EPG_TYPE_INFOBARGRAPH:
+					self.ask_time = ret[1]
 					now = time() - int(config.epg.histminutes.value) * 60
 					if self.type == EPG_TYPE_GRAPH:
 						self.ask_time -= self.ask_time % (int(config.epgselection.graph_roundto.value) * 60)
@@ -994,10 +995,15 @@ class EPGSelection(Screen, HelpableScreen):
 		title = None
 		for timer in self.session.nav.RecordTimer.timer_list:
 			if timer.eit == eventid and ':'.join(timer.service_ref.ref.toString().split(':')[:11]) == refstr:
-				cb_func1 = lambda ret: self.removeTimer(timer)
-				cb_func2 = lambda ret: self.editTimer(timer)
-				cb_func3 = lambda ret: self.disableTimer(timer)
-				menu = [(_("Delete timer"), 'CALLFUNC', self.RemoveChoiceBoxCB, cb_func1), (_("Edit timer"), 'CALLFUNC', self.RemoveChoiceBoxCB, cb_func2), (_("Disable timer"), 'CALLFUNC', self.RemoveChoiceBoxCB, cb_func3)]
+				if timer.isRunning():
+					cb_func1 = lambda ret: self.removeTimer(timer)
+					cb_func2 = lambda ret: self.editTimer(timer)
+					menu = [(_("Delete timer"), 'CALLFUNC', self.RemoveChoiceBoxCB, cb_func1), (_("Edit timer"), 'CALLFUNC', self.RemoveChoiceBoxCB, cb_func2)]
+				else:
+					cb_func1 = lambda ret: self.removeTimer(timer)
+					cb_func2 = lambda ret: self.editTimer(timer)
+					cb_func3 = lambda ret: self.disableTimer(timer)
+					menu = [(_("Delete timer"), 'CALLFUNC', self.RemoveChoiceBoxCB, cb_func1), (_("Edit timer"), 'CALLFUNC', self.RemoveChoiceBoxCB, cb_func2), (_("Disable timer"), 'CALLFUNC', self.RemoveChoiceBoxCB, cb_func3)]
 				title = _("Select action for timer %s:") % event.getEventName()
 				break
 		else:

@@ -191,10 +191,6 @@ class ChannelContextMenu(Screen):
 						append_when_current_valid(current, menu, (_("stop using as startup service"), self.unsetStartupService), level=0)
 					else:
 						append_when_current_valid(current, menu, (_("set as startup service"), self.setStartupService), level=0)
-#					if config.servicelist.startupservice_standby.value == self.csel.getCurrentSelection().toString():
-#						append_when_current_valid(current, menu, (_("stop using as startup service from standby"), self.unsetStartupServiceStandby), level = 0)
-#					else:
-#						append_when_current_valid(current, menu, (_("set as startup service from standby"), self.setStartupServiceStandby), level = 0)
 					if self.parentalControlEnabled:
 						if self.parentalControl.getProtectionLevel(csel.getCurrentSelection().toCompareString()) == -1:
 							append_when_current_valid(current, menu, (_("add to parental protection"), boundFunction(self.addParentalProtection, csel.getCurrentSelection())), level=0)
@@ -349,7 +345,7 @@ class ChannelContextMenu(Screen):
 		ref = self.csel.servicelist.getCurrent()
 		if self.removeFunction and ref and ref.valid():
 			if self.csel.confirmRemove:
-				list = [(_("yes"), True), (_("no"), False), (_("yes") + " " + _("and never ask again this session again"), "never")]
+				list = [(_("yes"), True), (_("no"), False), (_("yes") + ", " + _("and never ask again this session again"), "never")]
 				self.session.openWithCallback(self.removeFunction, MessageBox, _("Are you sure to remove this entry?") + "\n%s" % self.getCurrentSelectionName(), list=list)
 			else:
 				self.removeFunction(True)
@@ -1299,7 +1295,7 @@ class ChannelSelectionEdit:
 
 	def removeCurrentEntry(self, bouquet=False):
 		if self.confirmRemove:
-			list = [(_("yes"), True), (_("no"), False), (_("yes") + " " + _("and never ask again this session again"), "never")]
+			list = [(_("yes"), True), (_("no"), False), (_("yes") + ", " + _("and never ask again this session again"), "never")]
 			self.session.openWithCallback(boundFunction(self.removeCurrentEntryCallback, bouquet), MessageBox, _("Are you sure to remove this entry?"), list=list)
 		else:
 			self.removeCurrentEntryCallback(bouquet, True)
@@ -2683,6 +2679,7 @@ class PiPZapSelection(ChannelSelection):
 class RadioInfoBar(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
+		Screen.setTitle(self, _("Radio Channel Selection"))
 		self['RdsDecoder'] = RdsDecoder(self.session.nav)
 
 

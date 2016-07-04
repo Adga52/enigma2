@@ -20,7 +20,7 @@
 		<font filename="nmsbd.ttf" name="FdLcD" scale="100"/>
 	</fonts>
 
-<!-- template V1.6.8a 21.12.2015-->
+<!-- template V1.6.8b 13.03.2016-->
 	<screen name="SummaryClockPanel">
 		<widget source="global.CurrentTime" render="Label" position="center,170" size="195,75" font="FdLcD;75" halign="center" noWrap="1" transparent="1">
 			<convert type="ClockToText"></convert>
@@ -208,7 +208,7 @@
 		<widget source="session.CurrentService" render="Label" position="0,0" size="400,40" foregroundColor="#87CEFA" font="FdLcD;38" halign="center">
 			<convert type="ServiceName">Name</convert>
 		</widget>
-		<widget source="parent.RdsDecoder" render="Label" position="0,45"  size="400,125" font="FdLcD;37" halign="center" valign="center">
+		<widget source="parent.RdsDecoder" render="RunningText" position="0,60"  size="400,100" options="movetype=running,direction=top,startpoint=0,startdelay=2000,wrap=1,always=0,repeat=2,oneshot=1" font="FdLcD;45" halign="center" valign="center" >
 			<convert type="RdsInfo">RadioText</convert>
 		</widget>
 		<panel name="SummaryClockPanel" />
@@ -220,8 +220,7 @@
 	</screen>
 <!-- NumberZapExt -->    
 	<screen name="NumberZapExt_summary" position="0,0" size="400,240">
-		<widget source="parent.number_summary" render="Label" position="0,0" size="400,99" font="FdLcD;105" halign="center" valign="center" transparent="1" />
-		<widget source="parent.service_summary" render="Label" position="0,101" size="400,139" font="FdLcD;55" halign="center" valign="center" transparent="1" />
+		<widget source="parent.channel" render="Label" position="0,0" size="400,240" font="FdLcD;80" halign="center" valign="center" transparent="1" />
 	</screen>
 <!-- menus-->
 	<screen name="MenuSummary" position="fill">

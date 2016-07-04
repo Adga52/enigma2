@@ -1,5 +1,9 @@
 <!--suppress XmlUnboundNsPrefix -->
 <keymap>
+	<map context="2ndInfobarActions">
+		<key id="KEY_UP" mapto="pageUp" flags="mr" />
+		<key id="KEY_DOWN" mapto="pageDown" flags="mr" />
+	</map>
 	<map context="ListboxActions">
 		<device name="keyboard">
 			<key id="a" mapto="up" flags="mr" />
@@ -90,7 +94,7 @@
 	</map>
 
 	<map context="InfobarInstantRecord">
-		<key id="KEY_RECORD" mapto="instantRecord" flags="m" />
+		<key id="KEY_RECORD" mapto="instantRecord" flags="b" />
 		<key id="KEY_RECORD" mapto="ShortRecord" flags="b" />
 		<key id="KEY_RECORD" mapto="LongRecord" flags="l" />
 		<key id="KEY_RED" mapto="instantRecord" flags="b" />
@@ -260,31 +264,10 @@
 	</map>
 
 	<map context="InfobarAudioSelectionActions">
-		<device name="dreambox advanced remote control (native)">
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="b" />
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="l" />
-		</device>
-		<device name="dreambox remote control (native)">
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="b" />
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="l" />
-		</device>
-		<device name="gigablue remote control">
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="b" />
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="l" />
-		</device>
-		<device name="OPTIMUSS OS2+ remote control (native)">
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="b" />
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="l" />
-		</device>
-		<device name="OPTIMUSS OS1+ remote control (native)">
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="b" />
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="l" />
-		</device>
-		<device name="remote control">
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="b" />
-			<key id="KEY_YELLOW" mapto="audioSelection" flags="l" />
-		</device>		
-		<key id="KEY_AUDIO" mapto="audio_key" flags="b" />
+		<key id="KEY_YELLOW" mapto="yellow_key" flags="b" />
+		<key id="KEY_YELLOW" mapto="yellow_key" flags="l" />
+		<key id="KEY_AUDIO" mapto="audioSelection" flags="b" />
+		<key id="KEY_AUDIO" mapto="audioSelectionLong" flags="l" />
 		<key id="KEY_OPTION" mapto="audioSelection" flags="m" />
 	</map>
 
@@ -542,7 +525,7 @@
 		<key id="KEY_PAUSE" mapto="timeshiftStart" flags="m" />
 		<key id="KEY_STOP" mapto="timeshiftStop" flags="m" />
 		<!--key id="KEY_TIME" mapto="timeshiftStart" flags="m" /-->
-		<key id="KEY_RECORD" mapto="instantRecord" flags="m" />
+		<key id="KEY_RECORD" mapto="instantRecord" flags="b" />
 		<key id="KEY_PREVIOUS" mapto="jumpPreviousFile" flags="m" />
 		<key id="KEY_NEXT" mapto="jumpNextFile" flags="m" />
 		<key id="KEY_STOP" mapto="instantRecord" flags="l" />
@@ -919,28 +902,38 @@
 	</map>
 
 	<map context="DVDPlayerActions">
-		<key id="KEY_MENU" mapto="dvdMenu" flags="m" />
-		<key id="KEY_INFO" mapto="toggleInfo" flags="m" />
-		<key id="KEY_CHANNELUP" mapto="nextTitle" flags="m" />
-		<key id="KEY_CHANNELDOWN" mapto="prevTitle" flags="m" />
-
-		<key id="KEY_PREVIOUS" mapto="prevChapter" flags="m" />
-		<key id="KEY_NEXT" mapto="nextChapter" flags="m" />
-		<key id="KEY_TV" mapto="tv" flags="m" />
-		<key id="KEY_AUDIO" mapto="AudioSelection" flags="m" />
-		<key id="KEY_AUDIO" mapto="dvdAudioMenu" flags="l" />
-		<key id="KEY_RADIO" mapto="nextAudioTrack" flags="m" />
-		<key id="KEY_TEXT" mapto="nextSubtitleTrack" flags="m" />
-		<key id="KEY_VIDEO" mapto="nextAngle" flags="m" />
-
+		<key id="KEY_MENU" mapto="dvdMenu" flags="m"/>
+		<key id="KEY_INFO" mapto="toggleInfo" flags="m"/>
+		<key id="KEY_CHANNELUP" mapto="nextTitle" flags="m"/>
+		<key id="KEY_CHANNELDOWN" mapto="prevTitle" flags="m"/>
+		<device name="dreambox remote control (native)">
+			<key id="KEY_PREVIOUS" mapto="prevChapter" flags="m"/>
+			<key id="KEY_NEXT" mapto="nextChapter" flags="m"/>
+			<key id="KEY_TV" mapto="tv" flags="m"/>
+			<key id="KEY_AUDIO" mapto="AudioSelection" flags="m"/>
+			<key id="KEY_AUDIO" mapto="dvdAudioMenu" flags="l"/>
+			<key id="KEY_RADIO" mapto="nextAudioTrack" flags="m"/>
+			<key id="KEY_TEXT" mapto="nextSubtitleTrack" flags="m"/>
+			<key id="KEY_VIDEO" mapto="nextAngle" flags="m"/>
+		</device>
+		<device name="dreambox advanced remote control (native)">
+			<key id="KEY_PREVIOUS" mapto="prevChapter" flags="m"/>
+			<key id="KEY_NEXT" mapto="nextChapter" flags="m"/>
+			<key id="KEY_TV" mapto="tv" flags="m"/>
+			<key id="KEY_STOP" mapto="tv" flags="m"/>
+			<key id="KEY_RADIO" mapto="dvdAudioMenu" flags="l"/>
+			<key id="KEY_RADIO" mapto="nextAudioTrack" flags="b"/>
+			<key id="KEY_TEXT" mapto="nextSubtitleTrack" flags="m"/>
+			<key id="KEY_VIDEO" mapto="nextAngle" flags="m"/>
+		</device>
 		<!--device name="dreambox ir keyboard">
-			<key id="KEY_PAUSE" mapto="pause" flags="m" />
-			<key id="KEY_PLAY" mapto="play" flags="m" />
-			<key id="KEY_STOP" mapto="stop" flags="b" />
-			<key id="KEY_STOP" mapto="shift_stop" flags="l" />
-			<key id="KEY_RECORD" mapto="shift_record" flags="l" />
-			<key id="KEY_PREVIOUSSONG" mapto="previous" flags="m" />
-			<key id="KEY_NEXTSONG" mapto="next" flags="m" />
+			<key id="KEY_PAUSE" mapto="pause" flags="m"/>
+			<key id="KEY_PLAY" mapto="play" flags="m"/>
+			<key id="KEY_STOP" mapto="stop" flags="b"/>
+			<key id="KEY_STOP" mapto="shift_stop" flags="l"/>
+			<key id="KEY_RECORD" mapto="shift_record" flags="l"/>
+			<key id="KEY_PREVIOUSSONG" mapto="previous" flags="m"/>
+			<key id="KEY_NEXTSONG" mapto="next" flags="m"/>
 		</device-->
 	</map>
 	<map context="ButtonSetupActions">
@@ -977,6 +970,10 @@
 		<key id="KEY_RIGHT" mapto="cross_right" flags="mr"/>
 		<key id="KEY_UP" mapto="cross_up" flags="m"/>
 		<key id="KEY_DOWN" mapto="cross_down" flags="m"/>
+		<key id="KEY_PAGEUP" mapto="pageup" flags="b"/>
+		<key id="KEY_PAGEUP" mapto="pageup_long" flags="l"/>
+		<key id="KEY_PAGEDOWN" mapto="pagedown" flags="b"/>
+		<key id="KEY_PAGEDOWN" mapto="pagedown_long" flags="l"/>
 		<key id="KEY_CHANNELUP" mapto="channelup" flags="b"/>
 		<key id="KEY_CHANNELDOWN" mapto="channeldown" flags="b"/>
 		<key id="KEY_NEXT" mapto="next" flags="mr"/>

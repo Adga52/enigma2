@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-18 00:53+0300\n"
-"PO-Revision-Date: 2016-06-18 00:59+0300\n"
+"POT-Creation-Date: 2016-08-20 18:02+0300\n"
+"PO-Revision-Date: 2016-08-20 18:03+0300\n"
 "Last-Translator: Audronis Grincevicius <adga@zebra.lt>\n"
 "Language-Team: adga (c) <adga@zebra.lt>\n"
 "Language: lt\n"
@@ -15720,6 +15720,10 @@ msgstr "Pasirinkite atvaizdą: STARTUP_1"
 #, python-format
 msgid "Select Image: %s"
 msgstr "Pasirinkite atvaizdą: %s"
+
+#: TimerEntry.py
+msgid "After Recording"
+msgstr "Po įrašymo"
 
 #, fuzzy
 #~ msgid ""

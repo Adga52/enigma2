@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-05 14:38+0000\n"
-"PO-Revision-Date: 2016-07-18 18:07+0200\n"
+"PO-Revision-Date: 2016-10-27 14:24+0200\n"
 "Last-Translator: mike99 <mike99@mail.to>\n"
 "Language-Team: openATV\n"
 "Language: de\n"
@@ -477,10 +477,10 @@ msgid "2X"
 msgstr "2x"
 
 msgid "2nd Infobar timeout"
-msgstr "Anzeigedauer zweite Infoleiste"
+msgstr "2te Infoleiste Anzeigedauer"
 
 msgid "2nd infobar"
-msgstr "Zweite Infoleiste"
+msgstr "2te Infoleiste"
 
 msgid "2 minutes"
 msgstr "2 Minuten"
@@ -1033,7 +1033,7 @@ msgid ""
 "Are you sure you want to delete\n"
 "the following backup:\n"
 msgstr ""
-"Sicher das Folgendes gelöscht werden soll?\n"
+"Sicher das folgendes gelöscht werden soll?\n"
 "Backup(s):\n"
 
 msgid "Are you sure you want to delete all selected logs:\n"
@@ -1343,7 +1343,7 @@ msgstr "Startzeit"
 
 #
 msgid "Behavior of 'pause' when paused"
-msgstr "Verhalten der Pausetaste bei Standbild"
+msgstr "Verhalten der Play oder Play/Pausetaste bei Standbild"
 
 #
 msgid "Single step (GOP)"
@@ -1963,7 +1963,7 @@ msgid "Configure the hard disk drive to go to standby after the specified idle t
 msgstr "Einstellen nach wieviel Leerlaufzeit eine Festplatte in den Ruhezustand geht."
 
 msgid "Configure the behaviour of 'pause' when the movie is paused"
-msgstr "Verhalten der Pausetaste bei Standbild"
+msgstr "Verhalten der Play oder Play/Pausetaste bei Standbild"
 
 msgid "Configure the behavior when movie playback is manually stopped."
 msgstr "Verhalten beim Stoppen eines Films"
@@ -2034,8 +2034,23 @@ msgstr "Typ der Statusanzeige in der Filmliste"
 msgid "Configure the vertical position of the subtitles, measured from the bottom of the screen."
 msgstr "Konfiguriere die vertikale Position von Untertiteln, gemessen vom unteren Bildrand."
 
-msgid "Configure how recording filenames are constructed."
-msgstr "Zusammensetzung des Namens von Aufnahmen."
+#: setup.xml / don´t use \n for linefeed in source text, it will not find the translation
+msgid ""
+"Configure how recording filenames are constructed. "
+"Standard: Date Time - Channel - Title "
+"Very very short: Title "
+"Very short: Title - Date Time "
+"Short with time: Date Time - Title "
+"Short: Date - Title "
+"Long: Date Time - Channel - Title - Info"
+msgstr ""
+"Zusammensetzung des Dateinamens von Aufnahmen.\n"
+"Standard: Datum Zeit - Sender - Titel\n"
+"Extrem kurz: Titel\n"
+"Sehr kurz: Titel - Datum Zeit\n"
+"Kurz mit Zeit: Datum Zeit - Titel\n"
+"Kurz: Datum - Titel\n"
+"Lang: Datum Zeit - Sender - Titel - Info"
 
 msgid "Configure which tuner type will be preferred, when the same service is available on different types of tuners."
 msgstr "Konfigurieren der bevorzugten von mehreren für einen Sender verfügbaren Empfangsarten."
@@ -2130,7 +2145,7 @@ msgid "Open the movie list"
 msgstr "Filmliste öffnen"
 
 msgid "Continues"
-msgstr "Dauert"
+msgstr "Endlos"
 
 msgid "Continues play (loop)"
 msgstr "Endlos (Schleife)"
@@ -2680,6 +2695,102 @@ msgstr "Für Aufnahmen reservierter Speicher (in GB)"
 msgid "Configure the aspect ratio of the screen."
 msgstr "Konfigurieren Sie das Seitenverhältnis des Bildschirms."
 
+#: VideoMode.py
+msgid "Lowest Mode"
+msgstr "Niedrigster Modus"
+
+#: VideoMode.py
+msgid "Refresh rate for 'Lowest Mode'"
+msgstr "Bildwiederholrate für 'Niedrigster Modus'"
+
+#: VideoMode.py
+msgid "Show 24p up to 720p / higher than 720p as"
+msgstr "Zeige 24p bis 720p / höher als 720p mit"
+
+#: VideoMode.py
+msgid "Show 25p up to 720p / higher than 720p as"
+msgstr "Zeige 25p bis 720p / höher als 720p mit"
+
+#: VideoMode.py
+msgid "Show 30p up to 720p / higher than 720p as"
+msgstr "Zeige 30p bis 720p / höher als 720p mit"
+
+#: VideoMode.py
+msgid "Show 24p up to resolution 720p or higher than 720p as a different Framerate."
+msgstr "Zeige 24p bis zu einer Auflösung von 720p oder höher als 720p mit einer anderen Bildwiederholrate."
+
+#: VideoMode.py
+msgid "Show 25p up to resolution 720p or higher than 720p as a different Framerate."
+msgstr "Zeige 25p bis zu einer Auflösung von 720p oder höher als 720p mit einer anderen Bildwiederholrate."
+
+#: VideoMode.py
+msgid "Show 30p up to resolution 720p or higher than 720p as a different Framerate."
+msgstr "Zeige 30p bis zu einer Auflösung von 720p oder höher als 720p mit einer anderen Bildwiederholrate."
+
+#: VideoMode.py
+msgid "Show unknown video format as"
+msgstr "Zeige unbekannte Videoauflösung als"
+
+#: VideoMode.py
+msgid "Show unknown Videoresolution as next higher or as highest screen resolution."
+msgstr "Zeige unbekannte Videoauflösungen mit der nächsthöheren oder höchsten Auflösung."
+
+#: VideoMode.py
+msgid "Enable preview"
+msgstr "Aktiviere Vorschau"
+
+#: VideoMode.py
+msgid "Show preview of current mode (*)."
+msgstr "Zeige Vorschau des aktuellen Modus (*)."
+
+#: VideoMode.py
+msgid "%sMode for SD (up to 576p)"
+msgstr "%sModus für SD (bis 576p)"
+
+#: VideoMode.py
+msgid "%sRefresh rate for SD"
+msgstr "%sBildwiederholrate für SD"
+
+#: VideoMode.py
+msgid "%sMode for HD (up to 720p)"
+msgstr "%sModus für HD (bis 720p)"
+
+#: VideoMode.py
+msgid "%sRefresh rate for HD"
+msgstr "%sBildwiederholrate für HD"
+
+#: VideoMode.py
+msgid "%sMode for FHD (up to 1080p)"
+msgstr "%sModus für FHD (bis 1080p)"
+
+#: VideoMode.py
+msgid "%sRefresh rate for FHD"
+msgstr "%sBildwiederholrate für FHD"
+
+#: VideoMode.py
+msgid "%sMode for UHD (up to 2160p)"
+msgstr "%sModus für UHD (bis 2160p)"
+
+#: VideoMode.py
+msgid "%sRefresh rate for UHD"
+msgstr "%sBildwiederholrate für UHD"
+
+#: VideoMode.py
+msgid "%sShow 1080i as 1080p"
+msgstr "%sZeige 1080i als 1080p"
+
+#: VideoMode.py
+msgid "Use Deinterlacing for 1080i Videosignal?"
+msgstr "Soll für ein Videosignal von 1080i Deinterlacing benutzt werden?"
+
+#: AVSwitch.py
+msgid "next higher Resolution"
+msgstr "nächsthöhere Auflösung"
+
+#: AVSwitch.py
+msgid "highest Resolution"
+msgstr "höchste Auflösung"
+
 #
 msgid "Display 16:9 content as"
 msgstr "16:9-Inhalt anzeigen als"
@@ -3075,7 +3186,7 @@ msgstr "Verstrichene & Verbleibene"
 
 #
 msgid "Electronic Program Guide"
-msgstr "Elektronischer Programmführer (EPG)"
+msgstr "Elektronischer Programmführer"
 
 #
 msgid "Enable"
@@ -4457,12 +4568,21 @@ msgstr "Laden"
 msgid "Load EPG"
 msgstr "EPG laden"
 
+#: /data/menu.xml
+msgid "Delete EPG"
+msgstr "EPG löschen"
+
+#: /Components/EpgLoadSave.py
+msgid "Are you sure you want to delete the EPG data from:\n"
+msgstr "Sicher das Sie die EPG-Daten löschen wollen:\n"
+
 #
 msgid "Load Length of Movies in Movielist"
 msgstr "Anzeigen der Spielzeit in der Filmliste"
 
-msgid "Load/Save"
-msgstr "Laden/Speichern"
+#: /data/menu.xml
+msgid "Load/Save/Delete"
+msgstr "Laden/Speichern/Löschen"
 
 #
 msgid "Local Network"
@@ -5802,6 +5922,10 @@ msgstr "Subservice zur Aufnahme auswählen..."
 msgid "Please select a subservice..."
 msgstr "Subservice auswählen..."
 
+#. Screens/InfoBarGenerics.py
+msgid "Please select a sub service..."
+msgstr "Subservice auswählen..."
+
 msgid "Please select an NFI file and press green key to flash!"
 msgstr "NFI-Datei auswählen und zum Flashen GRÜN drücken!"
 
@@ -5939,6 +6063,26 @@ msgstr "Plugin Manager"
 #: PluginBrowser.py
 msgid "No new plugins found"
 msgstr "Keine neuen Plugins gefunden"
+
+#: PluginBrowser.py
+msgid "Edit mode off"
+msgstr "Edit-Modus aus"
+
+#: PluginBrowser.py
+msgid "Edit mode on"
+msgstr "Edit-Modus an"
+
+#: PluginBrowser.py
+msgid "Move mode off"
+msgstr "Move-Modus aus"
+
+#: PluginBrowser.py
+msgid "Move mode on"
+msgstr "Move-Modus an"
+
+#: PluginBrowser.py
+msgid "show"
+msgstr "Zeigen"
 
 #
 msgid "Plugin manager activity information"
@@ -7996,7 +8140,7 @@ msgid "External subtitle color"
 msgstr "Farbe für externe Untertitel"
 
 msgid "Configure the color of the external subtitles, alternative (normal in white, italic in yellow, bold in cyan, underscore in green), white or yellow."
-msgstr "Farbe der externen Untertitel , Alternativ (normal in Weiß, kursiv in Gelb, fett in Cyan, Unterstriche in Grün), Weiß oder Gelb."
+msgstr "Farbe der externen Untertitel, Alternativ (normal in Weiß, kursiv in Gelb, fett in Cyan, Unterstriche in Grün), Weiß oder Gelb."
 
 msgid "Automatically turn on external subtitles"
 msgstr "Externe Untertitel automatisch anschalten"
@@ -12170,6 +12314,13 @@ msgstr ""
 "\n"
 "Sie benötigen mindestens 300 MB freien Speicherplatz.\n"
 
+msgid ""
+"You can select with yellow the OnlineFlash Image\n"
+" or select Recovery to create a USB Disk Image for clean Install."
+msgstr ""
+"Sie können mit 'Gelb' das OnlineFlash Image auswählen\n"
+"oder wählen sie 'Recovery', um ein USB-Image für eine saubere Installation zu erstellen."
+
 #
 msgid "Full back-up on %s"
 msgstr "Komplett Backup auf %s"
@@ -12189,6 +12340,10 @@ msgstr "Bitte etwas Geduld, das Backup wird erstellt,\n"
 #
 msgid "because of the used filesystem the back-up\n"
 msgstr "abhängig vom System dauert das Backup\n"
+
+#
+msgid "will take about 30 minutes for this system\n"
+msgstr "ca. 30 Minuten\n"
 
 #
 msgid "will take about 3-12 minutes for this system\n"
@@ -12782,10 +12937,10 @@ msgid "Maximum no of days:"
 msgstr "Maximale Anzahl von Tagen:"
 
 msgid "Maximum space used (MB):"
-msgstr "Maximale Speicherplatznutznug (MB):"
+msgstr "Maximale Speicherplatznutzung (MB):"
 
 msgid "Space used:"
-msgstr "Speicherplatznutznug:"
+msgstr "Speicherplatznutzung:"
 
 msgid "Logs location"
 msgstr "Logs Speicherort"
@@ -12817,7 +12972,7 @@ msgstr "Re-Mount der Netzwerklaufwerke alle ( X Stunden)"
 msgid "%02d/%02d, %02d:%02d"
 msgstr "%02d.%02d. %02d:%02d"
 
-msgid "No Delay"
+msgid "no delay"
 msgstr "Keine Verzögerung"
 
 msgid "No delay"
@@ -14072,6 +14227,22 @@ msgstr "Links, umgebrochen"
 msgid "right, wrapped"
 msgstr "Rechts, umgebrochen"
 
+#: setup.xml
+msgid "Red button"
+msgstr "Rote-Taste"
+
+#: setup.xml
+msgid "Green button"
+msgstr "Grüne-Taste"
+
+#: setup.xml
+msgid "Yellow button"
+msgstr "Gelbe-Taste"
+
+#: setup.xml
+msgid "Blue button"
+msgstr "Blaue-Taste"
+
 #
 msgid "When nonzero, a recording will start earlier than the starting time as indicated by the EPG."
 msgstr "Die Angabe im EPG für eine Aufnahme wird entsprechend früher gestartet in Minuten."
@@ -14110,7 +14281,7 @@ msgstr "Verhalten bei Filmende"
 
 #
 msgid "Configure the behavior of the 'pause' key when movie playback is already paused."
-msgstr "Verhalten der Pausetaste bei Standbild"
+msgstr "Verhalten der Play oder Play/Pausetaste bei Standbild"
 
 msgid "Configure the minimum amount of disk space to be available for recordings. When the amount of space drops below this value, deleted items will be removed from the trash can."
 msgstr "Den erforderlichen Speicherplatz einstellen, der für Aufnahmen zur Verfügung stehen muss.  Wird der Wert erreicht, werden Inhalte aus dem Papierkorb gelöscht."
@@ -14346,7 +14517,7 @@ msgid ""
 msgstr ""
 "Justieren Sie die Position der Benutzeroberfläche. Die Ränder des roten Bereichs sollten die Ränder des TV-Bildschirms berühren.\n"
 "\n"
-"Danach grün drücken."
+"Danach Grün drücken."
 
 msgid "This option lets you adjust the transparency of the user interface"
 msgstr "Diese Option erlaubt es die Transparenz der Oberfläche einzustellen"
@@ -14607,7 +14778,7 @@ msgid "Skin setup"
 msgstr "LCD-Skinauswahl"
 
 msgid "LCD scroll speed"
-msgstr "LCD-Scollgeschwindigkeit"
+msgstr "LCD-Scrollgeschwindigkeit"
 
 msgid "Setup your Skin"
 msgstr "Einstellen des Skin`s"
@@ -14999,8 +15170,14 @@ msgstr "Simulation (kein Schreibvorgang)"
 msgid "Show only found image and mtd partitions.\n"
 msgstr "Zeige nur verfügbare Images und MTD Partitionen.\n"
 
+msgid "ofgwrite flashing ready.\n"
+msgstr "ofgwrite Flashvorgang beendet.\n"
+
+msgid "please press exit to go back to the menu.\n"
+msgstr "Bitte 'Exit' drücken, um zurück zum Menü zu gelangen.\n"
+
 msgid "ofgwrite will stop enigma2 now to run the flash.\n"
-msgstr "ofgwrite stoppt jetzt Enigma2 um den Flashvorgang zu starten.\n"
+msgstr "ofgwrite stoppt jetzt Enigma2, um den Flashvorgang zu starten.\n"
 
 msgid "Your STB will freeze during the flashing process.\n"
 msgstr "Während des Flashvorganges ist Ihr Receiver unbedienbar und das Bild wird stoppen.\n"
@@ -15186,7 +15363,7 @@ msgid "Delay time"
 msgstr "Verzögerungs Zeit"
 
 msgid "Set the time before checking video source for resolution infomation."
-msgstr "Hiermit können Sie eine Verzögerungszeit einstellen, bevor die Automatische Auflösung die Video Quelle prüft."
+msgstr "Hiermit können Sie eine Verzögerungszeit einstellen, bevor die automatische Auflösung die Video Quelle prüft."
 
 msgid "Force de-interlace"
 msgstr "Immer de-interlacer benutzen"
@@ -16598,6 +16775,26 @@ msgstr "Beim Versuch, PIP zu deaktivieren, wurde keine InfoBar.instance gefunden
 msgid "Aborted a pseudo recording.\n"
 msgstr "Eine Pseudo-Aufnahme wurde deaktiviert.\n"
 
+#: RecordTimer.py
+msgid "start recording"
+msgstr "Aufnahme starten"
+
+#: RecordTimer.py
+msgid "record time changed, start prepare is now: %s"
+msgstr "Aufnahmezeit geändert, startet: %s"
+
+#: RecordTimer.py
+msgid "Not enough free space to record"
+msgstr "Nicht genügend freier Speicher"
+
+#: RecordTimer.py
+msgid "zapping"
+msgstr "Umschalten"
+
+#: RecordTimer.py
+msgid "end zapping"
+msgstr "Umschalten beenden"
+
 # /data/setup.xml
 msgid "Include AIT in recordings"
 msgstr "Integriere AIT-Daten in Aufnahmen"
@@ -16655,6 +16852,12 @@ msgstr "Drücken Sie OK, um den Satelliten auszuwählen"
 # Satconfig.py
 msgid "Positioner (selecting satellites)"
 msgstr "Positioner (Satelliten auswählen)"
+
+# Satconfig.py
+msgid "You can switch with left and right this tuner types %s"
+msgstr ""
+"Hier können Sie mit Pfeiltasten Links/Rechts\n"
+"den Tuner-Typ ändern. %s"
 
 #: ParentalControlSetup.py:109 (4.2)
 msgid "Reload black-/white lists"
@@ -16923,6 +17126,42 @@ msgstr "Ausführen in "
 #: UsageConfig.py
 msgid "Execute after current event"
 msgstr "Ausführen nach der Sendung"
+
+#: UsageConfig.py
+msgid "Add/Remove Timer"
+msgstr "Timer hinzufügen/entfernen"
+
+#: UsageConfig.py
+msgid "24+ Hours"
+msgstr "+24 Stunden"
+
+#: UsageConfig.py
+msgid "24- Hours"
+msgstr "-24 Stunden"
+
+#: UsageConfig.py
+msgid "IMDB search"
+msgstr "IMDB Suche"
+
+#: UsageConfig.py
+msgid "Show Movies List"
+msgstr "Filmliste"
+
+#: UsageConfig.py
+msgid "Record - same as record button"
+msgstr "Aufnahme - wie Aufnahme-Taste"
+
+#: UsageConfig.py
+msgid "Goto Date/Timer"
+msgstr "Gehe zu Datum/Zeit"
+
+#: gEPG/ButtonText
+msgid "Goto Date/Time"
+msgstr "Datum/Zeit"
+
+#: UsageConfig.py
+msgid "EPG search"
+msgstr "EPG Suche"
 
 #: SleepTimerEdit.py
 msgid "Timer is activated: +%d min"
@@ -17270,6 +17509,12 @@ msgstr "Berücksichtigung der CI-Zuweisung"
 msgid "Programmlisten-Updater from DXAndy"
 msgstr "Programmlisten-Updater von DXAndy"
 
+msgid "Programmlisten from DXAndy"
+msgstr "Programmlisten von DXAndy"
+
+msgid "Programmlisten History"
+msgstr "Programmlisten Änderungen"
+
 msgid "Current installed"
 msgstr "Aktuell installiert"
 
@@ -17324,8 +17569,8 @@ msgstr ""
 "\n"
 "Möchten Sie die Programmliste installieren?"
 
-msgid "Programmlisten-Updater Restore"
-msgstr "Programmlisten-Updater wiederherstellen"
+msgid "Programmlisten Restore"
+msgstr "Programmlisten wiederherstellen"
 
 msgid ""
 "Selected settingslist: %s\n"
@@ -17361,10 +17606,10 @@ msgid "traditional (fast)"
 msgstr "klassisch (schnell)"
 
 msgid "Volume adjust slow"
-msgstr "Lautstärkeinstellung langsam"
+msgstr "Lautstärkeeinstellung langsam"
 
 msgid "Volume adjust fast"
-msgstr "Lautstärkeinstellung schnell"
+msgstr "Lautstärkeeinstellung schnell"
 
 msgid "Step value for single press the volume button. Depending on the setting (if greater) and the current volume (if less) will adjusted the step. (30 to 4, 18 to 3, 9 to 2 and 3 to 1)"
 msgstr ""
@@ -17434,6 +17679,98 @@ msgstr "Wähle Image: STARTUP_1"
 msgid "Select Image: %s"
 msgstr "Wähle Image: %s"
 
+#: MultiBootStartup.py
+msgid "no image found"
+msgstr "Kein Image gefunden"
+
+#: MultiBootStartup.py
+msgid "Do you want to reboot now with selected image?"
+msgstr "Soll die Box jetzt mit dem gewählten Image neu gestartet werden?"
+
+#: MultiBootStartup.py
+msgid "Your box needs Bootloaderversion(s)\n\n%s\n\nto make compatible with Bootoptions!"
+msgstr "Ihre Box braucht Bootloaderversion\n\n%s\n\num Bootoptionen nutzen zu können!"
+
+#: MultiBootStartup.py
+msgid "File not found - rename failed!"
+msgstr "Datei nicht gefunden - umbenennen fehlgeschlagen!"
+
+#: MultiBootStartup.py
+msgid "Name already exists - rename failed!"
+msgstr "Name existiert bereits - umbenennen fehlgeschlagen!"
+
+#: MultiBootStartup.py
+msgid "2160p60 without PiP (Standard)"
+msgstr "2160p60 ohne PiP (Standard)"
+
+#: MultiBootStartup.py
+msgid "2160p50 with PiP (Experimental)"
+msgstr "2160p50 mit PiP (Experimentell)"
+
+#: MultiBootStartup.py
+msgid " (unknown mode)"
+msgstr " (unbekannter Modus)"
+
+#: MultiBootStartup.py
+msgid "Unable to read image number"
+msgstr "Image Nummer nicht lesbar"
+
+#: MultiBootStartup.py
+msgid "Current Bootsettings: %s (%s)%s"
+msgstr "Aktuelle Booteinstellungen: %s (%s)%s"
+
+#: MultiBootStartup.py
+msgid "Select Bootoption: %s"
+msgstr "Bootoption auswählen: %s"
+
+#: MultiBootStartup.py
+msgid "Select Bootoption: not supported - see info"
+msgstr "Bootoption auswählen: nicht unterstützt - siehe Info"
+
+#: MultiBootStartup.py
+msgid "File '/boot/%s' copy to '/boot/STARTUP' failed!"
+msgstr "Datei '/boot/%s' kopieren nach '/boot/STARTUP' fehlgeschlagen!"
+
+#: MultiBootStartup.py
+msgid "Next boot will start from Image 1."
+msgstr "Beim nächsten Start wird von Image 1. gebootet"
+
+#: MultiBootStartup.py
+msgid "Can not repair file %s"
+msgstr "Konnte Datei %s nicht reparieren"
+
+#: MultiBootStartup.py
+msgid "Caution, next boot is starts with these settings!"
+msgstr "Achtung, beim nächsten Start wird mit diesen Einstellungen gebootet!"
+
+#: MultiBootStartup.py
+msgid "Alternative Image 1 partition for boot repair not found."
+msgstr "Alternative Image 1 Partition für Boot-Reparatur nicht gefunden."
+
+#: MultiBootStartup.py
+msgid "Wrong Bootsettings detected!"
+msgstr "Falsche Booteinstellungen erkannt!"
+
+#: MultiBootStartup.py
+msgid "Do you want to reboot now?"
+msgstr "Wollen Sie jetzt neu starten?"
+
+#: MultiBootStartup.py
+msgid "Can not write file %s"
+msgstr "Konnte Datei %s nicht schreiben"
+
+#: MultiBootStartup.py
+msgid "Write error!"
+msgstr "Schreibfehler!"
+
+#: MultiBootStartup.py
+msgid "Error in file %s"
+msgstr "Fehler in Datei %s"
+
+#: MultiBootStartup.py
+msgid "Command line error!"
+msgstr "Kommandozeilen Fehler!"
+
 #: Flash_online.py
 msgid "STARTUP"
 msgstr "Image"
@@ -17445,3 +17782,51 @@ msgid ""
 msgstr ""
 "Bitte stellen Sie für Tuner A\n"
 "das Hybrid-Tuner-Modell ein, ändern mit Steuerkreuz links/rechts"
+
+#: InfoBarGenerics.py:4204
+msgid "4_3_letterbox"
+msgstr "4:3 Letterbox"
+
+#: InfoBarGenerics.py:4204
+msgid "4_3_panscan"
+msgstr "4:3 PanScan"
+
+#: InfoBarGenerics.py:4204
+msgid "16_9"
+msgstr "16:9"
+
+#: InfoBarGenerics.py:4204
+msgid "16_9_always"
+msgstr "immer 16:9"
+
+#: InfoBarGenerics.py:4204
+msgid "16_10_letterbox"
+msgstr "16:10 Letterbox"
+
+#: InfoBarGenerics.py:4204
+msgid "16_10_panscan"
+msgstr "16:10 PanScan"
+
+#: InfoBarGenerics.py:4204
+msgid "16_9_letterbox"
+msgstr "16:9 Letterbox"
+
+#: VideoMode.py
+msgid "HDMI Colorimetry"
+msgstr "HDMI Farbprofile"
+
+#: VideoMode.py
+msgid "This option allows you can config the Colorimetry for HDR"
+msgstr "Diese Option erlaubt die Farbprofile Steuerung im HDR Modus"
+
+msgid "Choose the CI protocol operation mode for standard ci or ciplus."
+msgstr "Wähle das CI Protokoll für CI Normal oder CIPlus Module."
+
+msgid "Your Hardware can detect ci mode self or work only in legacy mode."
+msgstr "Hardware erkennt das CI Protokoll selber oder Hardware arbeitet nur im Legacy Mode."
+
+msgid "HDMI Colordepth"
+msgstr "HDMI Farbtiefe"
+
+msgid "This option allows you can config the Colordepth for UHD"
+msgstr "Diese Option erlaubt die Umstellung der Farbtiefe im UHD Modus"
